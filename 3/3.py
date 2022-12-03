@@ -16,16 +16,20 @@ def _get_compartments_shared_item(rucksack):
             return item
 
 
+def _get_group_shared_item(group_offset):
+    return (
+            set((x for x in data[group_offset]))
+            & set((x for x in data[group_offset+1]))
+            & set((x for x in data[group_offset+2]))
+            ).pop()
+
+
 def first():
     return sum([_get_priority(_get_compartments_shared_item(rucksack)) for rucksack in data])
 
 
 def second():
-    priority_sum = 0
-    for i in range(0, len(data), 3):
-        shared_item = (set((x for x in data[i])) & set((x for x in data[i+1])) & set((x for x in data[i+2]))).pop()
-        priority_sum += _get_priority(shared_item)
-    return priority_sum
+    return sum([_get_priority(_get_group_shared_item(group_offset)) for group_offset in range(0, len(data), 3)])
 
 
 data = get_input_data()
