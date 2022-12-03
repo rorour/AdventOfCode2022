@@ -17,6 +17,4 @@ def second():
 
 data = get_input_data()
 results(first, second)
-
 EOF
-
