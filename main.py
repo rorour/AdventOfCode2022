@@ -5,8 +5,7 @@ def get_input_data(file_name="./input", clean=True, to_int=False):
     def _to_int(line):
         if len(line) > 0:
             return int(line)
-        else:
-            return None
+        return None
 
     def _process(line):
         line = _clean(line) if clean else line
