@@ -15,6 +15,6 @@ def second():
     pass
 
 
-data = get_input_data()
+data = get_input_data(file_name="test_input")
 results(first, second)
 EOF
